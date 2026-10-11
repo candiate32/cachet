@@ -1,0 +1,263 @@
+<title>Cachet</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700&family=IBM+Plex+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap">
+<style>/*@@STYLES@@*/</style>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="i-file" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/></symbol>
+    <symbol id="i-clip" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5l-8.6 8.6a5.5 5.5 0 0 1-7.8-7.8l8.6-8.6a3.7 3.7 0 0 1 5.2 5.2l-8.6 8.6a1.8 1.8 0 0 1-2.6-2.6l7.9-7.9"/></symbol>
+    <symbol id="i-send" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5 12l7-7 7 7"/></symbol>
+    <symbol id="i-up" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M7 10v11H4a1 1 0 0 1-1-1v-9a1 1 0 0 1 1-1zM7 10l4-7a2.5 2.5 0 0 1 3 2.6L13.5 9H19a2 2 0 0 1 2 2.3l-1.2 7.5A2.5 2.5 0 0 1 17.3 21H7"/></symbol>
+    <symbol id="i-down" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17 14V3h3a1 1 0 0 1 1 1v9a1 1 0 0 1-1 1zM17 14l-4 7a2.5 2.5 0 0 1-3-2.6l.5-3.4H5a2 2 0 0 1-2-2.3l1.2-7.5A2.5 2.5 0 0 1 6.7 3H17"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></symbol>
+    <symbol id="i-bolt" viewBox="0 0 24 24" fill="currentColor"><path d="M13 2L4 14h7l-1 8 9-12h-7z"/></symbol>
+    <symbol id="i-reset" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><path d="M3 3v5h5"/></symbol>
+    <symbol id="i-mark" viewBox="0 0 32 32"><circle cx="16" cy="16" r="13" fill="none" stroke="currentColor" stroke-width="2.4"/><circle cx="16" cy="16" r="6.5" fill="none" stroke="currentColor" stroke-width="2.4" stroke-dasharray="3 2.4"/><circle cx="16" cy="16" r="2.4" fill="currentColor"/></symbol>
+  </defs>
+</svg>
+
+<header class="nav">
+  <div class="wrap">
+    <a class="brand" href="#top"><svg class="brand-mark" style="color:var(--accent)"><use href="#i-mark"/></svg>Cachet</a>
+    <nav class="nav-links">
+      <a href="#playground">Playground</a>
+      <a href="#why">Why semantic</a>
+      <a href="#how">How it works</a>
+      <a href="#learning">Self-learning</a>
+      <a href="#economics">Economics</a>
+      <a class="btn btn-primary" href="#playground">Try the demo</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <div class="wrap">
+    <section class="hero">
+      <div>
+        <span class="eyebrow">Semantic caching for RAG chatbots</span>
+        <h1>Answer it once. <em>Recognize it</em> every way it's asked.</h1>
+      </div>
+      <div>
+        <p class="hero-sub">Cachet sits in front of your retrieval pipeline. It turns every question into a vector, compares it by meaning with answers it has already given, and serves a match in milliseconds. A paraphrase still hits the cache, where an exact-match cache would miss it.</p>
+        <div class="hero-facts">
+          <div><b class="mono">~40 ms</b><span>cache hit, vs ~1.9 s to retrieve and generate</span></div>
+          <div><b class="mono">$0</b><span>LLM cost when a question is served from cache</span></div>
+          <div><b>Self-learning</b><span>new phrasings and feedback tune every cluster</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="playground" aria-label="Interactive playground">
+      <div class="app">
+        <div class="appbar">
+          <div class="dots" aria-hidden="true"><i></i><i></i><i></i></div>
+          <div class="appbar-title">Playground <span>· Meridian Corp workspace</span></div>
+          <span class="pill pill-demo" title="Responses are pre-scripted for this demo">Demo data</span>
+          <div class="spacer"></div>
+          <span class="seg-label" id="mode-label">Cache lookup</span>
+          <div class="seg" role="group" aria-labelledby="mode-label">
+            <button type="button" id="mode-sem" aria-pressed="true">Semantic</button>
+            <button type="button" id="mode-exact" aria-pressed="false">Exact match</button>
+          </div>
+          <button type="button" class="iconbtn" id="reset"><svg><use href="#i-reset"/></svg>Reset</button>
+        </div>
+
+        <aside class="side" aria-label="Knowledge base and cache">
+          <div class="side-sec docs">
+            <h4><span>Documents</span><span id="doc-count" class="mono">4</span></h4>
+            <ul class="doclist" id="docs"></ul>
+            <input type="file" id="file" multiple hidden accept=".pdf,.md,.txt,.docx,.html,.csv">
+          </div>
+          <button type="button" class="drop" id="drop"><b>Upload documents</b><br>PDF, DOCX, MD or TXT. Drop files here.</button>
+          <div class="side-scroll">
+            <div class="side-sec">
+              <h4><span>Semantic cache</span><span id="cache-count" class="mono">0</span></h4>
+              <ul class="cachelist" id="cache"></ul>
+            </div>
+          </div>
+        </aside>
+
+        <section class="chat" aria-label="Chat">
+          <div class="msgs" id="msgs" aria-live="polite"></div>
+          <div class="composer-wrap">
+            <div class="suggest" id="suggest"></div>
+            <form class="composer" id="composer">
+              <label for="q" class="sr" hidden>Ask a question</label>
+              <textarea id="q" rows="1" placeholder="Ask about Meridian's policies, security or pricing…"></textarea>
+              <div class="composer-row">
+                <button type="button" class="iconbtn" id="attach" title="Upload documents"><svg><use href="#i-clip"/></svg></button>
+                <span class="hint">Enter to send · Shift+Enter for a new line</span>
+                <button type="submit" class="send" id="send" aria-label="Send" disabled><svg><use href="#i-send"/></svg></button>
+              </div>
+            </form>
+          </div>
+        </section>
+
+        <aside class="insp" aria-label="Cache inspector">
+          <div class="card">
+            <div class="card-h"><h3>Session</h3><span class="sub">live</span></div>
+            <div class="stats">
+              <div class="stat"><b id="s-q">0</b><span>questions</span></div>
+              <div class="stat"><b id="s-hr">0%</b><span>cache hit rate</span></div>
+              <div class="stat"><b id="s-lat">–</b><span>avg latency</span></div>
+              <div class="stat"><b id="s-save">$0</b><span>LLM spend avoided</span></div>
+            </div>
+            <div class="thresh">
+              <label for="tau">Similarity threshold τ</label>
+              <input type="range" id="tau" min="0.80" max="0.98" step="0.01" value="0.88">
+              <output id="tau-out" for="tau">0.88</output>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-h"><h3>Query trace</h3><span class="sub" id="trace-q"></span></div>
+            <ol class="trace" id="trace"><li class="idle">Ask a question to watch it move through the pipeline.</li></ol>
+          </div>
+
+          <div class="card">
+            <div class="card-h"><h3>Embedding space</h3><span class="sub">2-D projection of 1024-d vectors</span></div>
+            <div class="map-wrap"><svg class="map" id="map" viewBox="0 0 320 220" role="img" aria-label="Map of cached questions grouped by meaning"></svg></div>
+            <div class="legend">
+              <span><i style="background:var(--accent)"></i>cached answer</span>
+              <span><i style="background:var(--accent);opacity:.45"></i>learned phrasing</span>
+              <span><i style="background:var(--hit)"></i>query (hit)</span>
+              <span><i style="background:var(--miss)"></i>query (miss)</span>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-h"><h3>Self-learning layer</h3><span class="sub">feedback loop</span></div>
+            <div class="learn-stats">
+              <div><b id="l-phr">0</b><span>phrasings learned</span></div>
+              <div><b id="l-tau">0</b><span>τ adjustments</span></div>
+              <div><b id="l-ref">0</b><span>answers refreshed</span></div>
+            </div>
+            <ul class="log" id="log"></ul>
+          </div>
+        </aside>
+      </div>
+    </section>
+  </div>
+
+  <section class="section" id="why">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">Why semantic</span>
+        <h2>People never ask the same question the same way twice.</h2>
+        <p>A traditional cache stores answers under the exact text of the question. Change one word and it misses, so the system pays for retrieval and generation again. Cachet compares meaning instead, using an embedding model such as Qwen3-Embedding.</p>
+      </div>
+      <div class="versus" role="table" aria-label="Exact match compared with semantic cache">
+        <div class="versus-row" role="row"><span role="columnheader">Question as typed</span><span role="columnheader">Exact match</span><span role="columnheader">Cachet</span></div>
+        <div class="versus-row" role="row"><span class="q" role="cell">How many vacation days do I get per year?<small>first time asked, answer generated and cached</small></span><span role="cell"><span class="pill pill-miss">Miss</span></span><span role="cell"><span class="pill pill-miss">Miss</span></span></div>
+        <div class="versus-row" role="row"><span class="q" role="cell">How many vacation days do I get per year?<small>identical text</small></span><span role="cell"><span class="pill pill-hit">Hit</span></span><span role="cell"><span class="pill pill-hit">Hit <span class="mono">1.000</span></span></span></div>
+        <div class="versus-row" role="row"><span class="q" role="cell">What's my annual PTO allowance?<small>different words, same meaning</small></span><span role="cell"><span class="pill pill-miss">Miss</span></span><span role="cell"><span class="pill pill-hit">Hit <span class="mono">0.947</span></span></span></div>
+        <div class="versus-row" role="row"><span class="q" role="cell">how much paid time off do employees get<small>lowercase, no question mark</small></span><span role="cell"><span class="pill pill-miss">Miss</span></span><span role="cell"><span class="pill pill-hit">Hit <span class="mono">0.931</span></span></span></div>
+        <div class="versus-row" role="row"><span class="q" role="cell">Days off per year?<small>terse</small></span><span role="cell"><span class="pill pill-miss">Miss</span></span><span role="cell"><span class="pill pill-hit">Hit <span class="mono">0.912</span></span></span></div>
+        <div class="versus-foot"><span>Repeat questions answered from cache</span><span><b>1 of 4</b></span><span><b style="color:var(--hit)">4 of 4</b></span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="how">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">How it works</span>
+        <h2>One embedding decides whether the LLM runs at all.</h2>
+        <p>Every question is embedded once. That vector is checked against past questions first. Only a miss pays for retrieval and generation, and every miss makes the next hit possible.</p>
+      </div>
+      <div class="flow">
+        <div class="node"><span class="n">1</span><h3>Embed the question</h3><p>Qwen3-Embedding turns the text into a 1024-dimension vector that encodes its meaning, in about 12 ms.</p><span class="pill pill-accent tag">Qwen3-Embedding-0.6B</span></div>
+        <div class="node"><span class="n">2</span><h3>Search the semantic cache</h3><p>An approximate nearest-neighbour index compares the vector with every question answered before, using cosine similarity.</p><span class="pill pill-accent tag">HNSW · cosine</span></div>
+        <div class="node"><span class="n">3</span><h3>Compare to the threshold</h3><p>If the closest match scores at or above τ for its cluster, the cached answer is served. Each cluster can have its own τ.</p><span class="pill pill-accent tag">τ = 0.88 default</span></div>
+      </div>
+      <div class="branch">
+        <div class="b-hit">
+          <h3><span class="pill pill-hit">Cache hit</span> Serve the stored answer</h3>
+          <p>The answer and its original citations come straight back. No retrieval, no LLM call, no tokens billed. The new phrasing is added to the cluster so the next variant matches even more confidently.</p>
+        </div>
+        <div class="b-miss">
+          <h3><span class="pill pill-miss">Cache miss</span> Run the RAG pipeline</h3>
+          <ol>
+            <li>Retrieve the most relevant chunks from your uploaded documents.</li>
+            <li>Generate a grounded answer with the LLM, citing its sources.</li>
+            <li>Write the question vector, answer and source fingerprints back to the cache.</li>
+          </ol>
+        </div>
+      </div>
+      <div class="loopband">
+        <span class="pill pill-learn">Self-learning layer</span>
+        <p>Runs alongside both paths. It watches hits, misses and user feedback, and adjusts thresholds, merges paraphrases and retires stale answers without anyone retuning it.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="learning">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">Self-learning layer</span>
+        <h2>The cache gets sharper the more it is used.</h2>
+        <p>A fixed threshold is either too loose or too strict for some topics. Cachet learns where the line belongs for each cluster of questions, from how people actually respond to its answers.</p>
+      </div>
+      <div class="learn-grid">
+        <div class="lcard"><h3>Adaptive thresholds</h3><p>A thumbs-down on a cached answer tightens τ for that cluster only. Consistent approval relaxes it back.</p><div class="ex">cluster "Refund policy"<br>τ 0.88 → 0.95</div></div>
+        <div class="lcard"><h3>Paraphrase clustering</h3><p>Every hit stores the new wording next to the original, so the cluster covers more of how people really ask.</p><div class="ex">"PTO allowance" joined<br>cluster "Vacation days" (3 phrasings)</div></div>
+        <div class="lcard"><h3>Freshness checks</h3><p>Each cached answer remembers which document chunks it came from. When a document changes, only the answers that depended on it are invalidated.</p><div class="ex">Refund Policy v3 uploaded<br>2 answers invalidated</div></div>
+        <div class="lcard"><h3>Grounding guard</h3><p>Answers with weak retrieval support are never cached, so a bad answer cannot be repeated thousands of times.</p><div class="ex">max chunk score 0.31<br>not cached</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="economics">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">Economics</span>
+        <h2>Every hit is an LLM call you don't pay for.</h2>
+        <p>Support and internal-knowledge bots see the same few hundred questions asked thousands of ways. Move the sliders to model the effect at your volume.</p>
+      </div>
+      <div class="calc">
+        <div class="calc-inputs">
+          <label for="c-vol"><span>Questions per month <output id="c-vol-out">1,000,000</output></span><input type="range" id="c-vol" min="0" max="8" step="1" value="4"></label>
+          <label for="c-hr"><span>Semantic cache hit rate <output id="c-hr-out">55%</output></span><input type="range" id="c-hr" min="10" max="85" step="5" value="55"></label>
+          <label for="c-cost"><span>Cost per generated answer <output id="c-cost-out">$0.0045</output></span><input type="range" id="c-cost" min="1" max="20" step="1" value="9"></label>
+        </div>
+        <div class="calc-out">
+          <div><b id="c-calls">550,000</b><span>LLM calls avoided per month</span></div>
+          <div><b id="c-save">$2,475</b><span>generation spend avoided per month</span></div>
+          <div><b id="c-lat">0.88 s</b><span>average response time, down from 1.90 s</span></div>
+          <div><b id="c-wait">160 h</b><span>of user waiting removed per month</span></div>
+        </div>
+        <p class="calc-note">Illustrative model. Assumes 1.9 s per generated answer and 40 ms per cache hit. Real hit rates depend on how repetitive the question stream is.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="stack">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">Planned stack</span>
+        <h2>Open models, standard infrastructure, any LLM.</h2>
+      </div>
+      <div class="stack">
+        <div><span class="role">Embeddings</span><b>Qwen3-Embedding</b><span>Open-weight, multilingual, self-hostable. 0.6B for speed, 4B where accuracy matters.</span></div>
+        <div><span class="role">Vector index</span><b>Qdrant or pgvector</b><span>One index for cached questions, one for document chunks.</span></div>
+        <div><span class="role">Generation</span><b>Model-agnostic</b><span>Works in front of any hosted or local LLM through one API.</span></div>
+        <div><span class="role">Learning</span><b>Feedback service</b><span>Per-cluster thresholds, paraphrase merging and freshness rules.</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="wrap closing">
+    <span class="eyebrow">Next</span>
+    <h2>The fastest answer is the one you already have.</h2>
+    <p>This demo shows the experience we are building. The next step is a production pilot on a real support knowledge base, measuring hit rate, latency and answer quality against an uncached baseline.</p>
+    <div class="row"><a class="btn btn-primary" href="#playground">Back to the playground</a><a class="btn" href="#how">How it works</a></div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap"><span>Cachet · Product demo, October 2026</span><span>Playground answers are pre-scripted to illustrate the product. Figures are illustrative.</span></div>
+</footer>
+
+<script>/*@@SCRIPT@@*/</script>
